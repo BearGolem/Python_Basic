@@ -21,12 +21,105 @@ print('Результат: {}'.format(func_separ(a, b)))
 # Функция должна принимать параметры как именованные аргументы.
 # Реализовать вывод данных о пользователе одной строкой.
 
-name = ''
-surname = ''
-birth_year = 0
-native_town = ''
-e_mail = ''
-phone_numb = 0
+a = 'Alex'
+b = 'Ko'
+c = 1817
+d = 'Paris'
+e = 'ForUncleToVilagge@mail.ru'
+f = 89991234567
 
-def user_info()
+def user_info(name, surname, birth_year, native_town, e_mail, phone_numb):
+    return name + " " + surname + " " + str(birth_year) + " " + native_town + " " + e_mail + " " + str(phone_numb)
 
+#a = input('Введите имя: ') и так далее для всех переменных функции, если требуется ввод от пользователя.
+
+print(user_info(name=a, surname=b, birth_year=c, native_town=d, e_mail=e, phone_numb=f))
+
+
+#Реализовать функцию my_func(), которая принимает три позиционных аргумента и
+# возвращает сумму наибольших двух аргументов.
+
+a = int(input('Введите число: '))
+b = int(input('Введите число: '))
+c = int(input('Введите число: '))
+
+def sum_digits(a, b, c):
+    return a + b + c - min(a, b, c)
+
+print(sum_digits(a, b, c))
+
+
+#Программа принимает действительное положительное число x и целое отрицательное число y.
+# Выполните возведение числа x в степень y. Задание реализуйте в виде функции my_func(x, y).
+# При решении задания нужно обойтись без встроенной функции возведения числа в степень.
+
+x = int(input('Введите X (натуральное целое): '))
+y = abs(int(input('Введите Y (отрицательная степень): ')))
+
+def my_func(x, y):
+    i = 0
+    result = 1
+    while i < y:
+        i += 1
+        result = result/x
+    return result
+
+print('{} в степени -{} равно: {}'.format(x, y, my_func(x, y)))
+
+
+#Программа запрашивает у пользователя строку чисел, разделённых пробелом.
+# При нажатии Enter должна выводиться сумма чисел. Пользователь может продолжить ввод чисел, разделённых
+# пробелом и снова нажать Enter. Сумма вновь введённых чисел будет добавляться к уже подсчитанной сумме.
+# Но если вместо числа вводится специальный символ, выполнение программы завершается.
+# Если специальный символ введён после нескольких чисел, то вначале нужно добавить сумму этих чисел
+# к полученной ранее сумме и после этого завершить программу.
+
+a = ''
+
+
+def my_func2(a):
+    result = 0
+    while 'a' not in a:
+        digits = []
+        a = input('Введите числа через пробел. Для выхода введите "а"(латиница): ')
+        digits = a.split(' ')
+        for i in digits:
+            if i == 'a':
+                return 'Сумма введеных чисел: {}'.format(result)
+            else:
+                try:
+                    result = result + int(i)
+                except ValueError:
+                    continue
+
+        print('Сумма введеных чисел: {}'.format(result))
+
+print(my_func2(a))
+
+
+#Реализовать функцию int_func(), принимающую слова из маленьких латинских букв и возвращающую их же,
+# но с прописной первой буквой. Например, print(int_func(‘text’)) -> Text.
+
+a = 'badaboom'
+
+def int_func(a):
+    #a1 = a[0]
+    return a.capitalize()
+
+print(int_func(a))
+
+
+#Продолжить работу над заданием. В программу должна попадать строка из слов, разделённых пробелом.
+# Каждое слово состоит из латинских букв в нижнем регистре. Нужно сделать вывод исходной строки,
+# но каждое слово должно начинаться с заглавной буквы. Используйте написанную ранее функцию int_func()
+
+abc_string = 'bada daba haya yohoo'
+
+def int_func2(abc_string):
+    result = ''
+    temp_string = abc_string.split(' ')
+    for i in temp_string:
+        result = result + ' ' + int_func(i)
+    return result.lstrip()
+
+print(int_func2(abc_string))
