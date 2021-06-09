@@ -1,0 +1,5 @@
+Aaaa 100000
+Bbbb 10000
+Cccc 50000
+Dddd 15000
+Eeee 12000
